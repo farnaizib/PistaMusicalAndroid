@@ -1,4 +1,4 @@
-.name: Build Pista Musical APK
+name: Build Pista Musical APK
 
 on:
   workflow_dispatch:
