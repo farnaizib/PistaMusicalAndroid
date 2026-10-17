@@ -31,7 +31,7 @@ jobs:
       - name: Descomprimir proyecto
         run: |
           mkdir proyecto
-          unzip -q PistaMusicalAndroid_avance5.zip -d proyecto
+          unzip -q "PistaMusicalAndroid_carpeta_10_aleatorias.zip" -d proyecto
           echo "Contenido descomprimido:"
           find proyecto -maxdepth 3 -name settings.gradle -o -name build.gradle
 
