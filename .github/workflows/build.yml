@@ -1,4 +1,4 @@
-name: Build Pista Musical APK
+.name: Build Pista Musical APK
 
 on:
   workflow_dispatch:
@@ -31,7 +31,7 @@ jobs:
       - name: Descomprimir proyecto
         run: |
           mkdir proyecto
-          unzip -q "PistaMusicalAndroid_arbitro_rotativo_v4_multiplo_jugadores.zip" -d proyecto
+          unzip -q "PistaMusicalAndroid_arbitro_rotativo_v5_cambiar_cancion_ronda1.zip" -d proyecto
           echo "Contenido descomprimido:"
           find proyecto -maxdepth 3 -name settings.gradle -o -name build.gradle
 
