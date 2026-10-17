@@ -1,0 +1,46 @@
+name: Build Pista Musical APK
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Descargar repositorio
+        uses: actions/checkout@v4
+
+      - name: Preparar Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Preparar Gradle
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '8.9'
+
+      - name: Preparar Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Descomprimir proyecto
+        run: |
+          mkdir proyecto
+          unzip -q PistaMusicalAndroid_avance5.zip -d proyecto
+          echo "Contenido descomprimido:"
+          find proyecto -maxdepth 3 -name settings.gradle -o -name build.gradle
+
+      - name: Compilar APK
+        run: |
+          PROYECTO=$(find proyecto -name settings.gradle -type f | head -n 1 | xargs dirname)
+          echo "Proyecto encontrado en: $PROYECTO"
+          cd "$PROYECTO"
+          gradle assembleDebug
+
+      - name: Guardar APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: PistaMusical-debug
+          path: proyecto/**/app/build/outputs/apk/debug/*.apk
