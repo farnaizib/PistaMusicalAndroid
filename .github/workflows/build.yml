@@ -31,7 +31,7 @@ jobs:
       - name: Descomprimir proyecto
         run: |
           mkdir proyecto
-          unzip -q "PistaMusicalAndroid_turnos_puntuacion_v2.zip" -d proyecto
+          unzip -q "PistaMusicalAndroid_arbitro_rotativo_v4_multiplo_jugadores.zip" -d proyecto
           echo "Contenido descomprimido:"
           find proyecto -maxdepth 3 -name settings.gradle -o -name build.gradle
 
